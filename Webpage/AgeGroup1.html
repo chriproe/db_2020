@@ -1,0 +1,141 @@
+<!DOCTYPE html> 
+<style>
+	#button1 , #button2, #button3, #button4, #button5, #button6 {
+	  display:inline-block;
+	  width: 300px;
+	  height: 40px;
+  }
+  
+  .myClass {
+	  display: flex;
+  }
+
+  .Dropdown {
+	  position: relative;
+	  display: inline-block;
+  }
+
+  .Dropdown-Menu {
+	  display: none;
+	  position: absolute;
+	  flex-direction: column;
+	  border: rgb(8, 72, 33) 1px;
+	  width: 100%;
+	  height: fit-content;
+	  background-color: #9e9e9e66;
+	  align-items: center;
+  }
+  .Dropdown-Menu:hover{
+	  background-color: #9e9e9e99;
+  }
+  .show{
+	  display: flex;
+  }
+  table, td  { border-width: 2px; border-style: solid; border-collapse: collapse; padding: 15px; color: #000000; text-align: center; }
+
+  table.pos_fixed1 { position:fixed; top:30px; left:10px; }
+
+  table.pos_fixed2 { position:fixed; top:30px; left:250px; }
+
+  table.pos_fixed3 { position:fixed; top:30px; left:490px; }
+
+</style>  
+<html>
+	<head>
+		<title> Age Group 1</title>
+	</head>
+
+  	<body>
+		<h1>Age Group 20 - 40</h1>
+		<h1> Most Visited Places in June 2021</h1> 
+     	<div class = "myClass">
+			<button onclick="document.location='default.asp'" id="button1">Home</button>
+			<button onclick="document.location='default.asp'" id="button2">Search</button>
+			<div class = "Dropdown">
+				<button id="button3">Views</button>
+				<div id="Dropdown-Menu1", class="Dropdown-Menu">
+					<a> View 1 </a>
+					<a> View 2 </a>
+				</div>	
+			</div>
+			<button onclick="document.location='default.asp'" id="button4">Edit Data</button>
+			<button onclick="document.location='default.asp'" id="button5">Tracing</button>
+			<div class = "Dropdown">
+				<button id="button6">Age Groups</button>			
+				<div id="Dropdown-Menu2", class="Dropdown-Menu">	
+					<a href="/Users/chrip/DataBase/templates/AgeGroup1.html"> Age Group 1 </a>
+					<a href="/Users/chrip/DataBase/templates/AgeGroup2.html"> Age Group 2 </a>
+					<a href="/Users/chrip/DataBase/templates/AgeGroup3.html"> Age Group 3 </a>
+				</div>
+			</div>				
+     	</div>
+
+   <script>
+	document.getElementById("button3").onclick = function() {myFunction()};
+	function myFunction() {
+ 		document.getElementById("Dropdown-Menu1").classList.toggle("show");
+	}
+	document.getElementById("button6").onclick = function() {myFunction1()};
+	function myFunction1() {
+ 		document.getElementById("Dropdown-Menu2").classList.toggle("show");
+	}
+   </script>
+
+	<table summary ="" width = "10%" class="pos_fixed1">
+		<thead>
+			<tr>
+				<th>Name of the Place</th>
+				<th>Number of times visited</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			{% for i in MostVisitedPlaces_20 %}
+			<tr>
+				<td> {{i[0]}} </td>
+				<td> {{i[1]}} </td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+
+	<table summary = "" width = "10%" class = "pos_fixed2">
+		<thead>
+			<tr>
+				<th>Name of Service</th>
+				<th>Number of times used</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			{% for j in MostUsedServices_20 %}
+			<tr>
+				<td> {{j[0]}} </td>
+				<td> {{j[1]}} </td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+
+	<table summary = "" width = "10%" class = "pos_fixed3">
+		<thead>
+			<tr>
+				<th>Name of Service</th>
+				<th>Number of times used</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			{% for z in NumberofTimesUsed_20 %}
+			<tr>
+				<td> {{z[0]}} </td>
+				<td> {{z[1]}} </td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+   </body>
+</html>

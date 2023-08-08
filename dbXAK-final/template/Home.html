@@ -1,0 +1,75 @@
+<!DOCTYPE html> 
+<html>
+  <title>Home</title>
+  <h1>Home</h1> 
+  <style>
+  	#button1 , #button2, #button3, #button4, #button5, #button6 {
+		display:inline-block;
+		width: 300px;
+		height: 40px;
+	}
+	
+	.myClass {
+		padding-bottom: 3em;
+		display: flex;
+	}
+
+	.Dropdown {
+		position: relative;
+		display: inline-block;
+	}
+
+	.Dropdown-Menu {
+		display: none;
+		position: absolute;
+		flex-direction: column;
+		border: black 1px;
+		width: 100%;
+		height: fit-content;
+		background-color: #9e9e9e66;
+		align-items: center;
+	}
+	.Dropdown-Menu:hover{
+		background-color: #9e9e9e99;
+	}
+	.show{
+		display: flex;
+	}
+  </style>  
+
+
+  <body>
+	<div class = "myClass">
+		<button onclick="javascript: window.location.href='/';" id="button1">Home</button>
+  		<button onclick="javascript: window.location.href='/Search';" id="button2">Search</button>
+		<div class = "Dropdown">
+			<button id="button3">Views</button>
+			<div id="Dropdown-Menu1", class="Dropdown-Menu">
+				<a href="/customer_info"> customer_info </a>
+				<a href="/services_sales"> services_sales </a>
+			</div>	
+		</div>
+		<button onclick="javascript: window.location.href='/EditData';" id="button4">Edit Data</button>
+		<button onclick="javascript: window.location.href='/Tracing';" id="button5">Tracing</button>
+		<div class = "Dropdown">
+			<button id="button6">Age Groups</button>			
+			<div id="Dropdown-Menu2", class="Dropdown-Menu">	
+				<a href="/AgeGroup1"> Age Group 1 </a>
+				<a href="/AgeGroup2"> Age Group 2 </a>
+				<a href="/AgeGroup3"> Age Group 3 </a>
+			</div>
+		</div>				
+     	</div>
+		<h4>Database Project by Proestaki Christina, Aglogallos Anastasios and Mores Konstantinos@</h4>
+   <script>
+	document.getElementById("button3").onclick = function() {myFunction()};
+	function myFunction() {
+ 		document.getElementById("Dropdown-Menu1").classList.toggle("show");
+	}
+	document.getElementById("button6").onclick = function() {myFunction1()};
+	function myFunction1() {
+ 		document.getElementById("Dropdown-Menu2").classList.toggle("show");
+	}
+   </script>
+   </body>
+</html>

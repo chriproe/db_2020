@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <h1>Age Group 61+</h1>
+</head>
+<style>
+    #button1 , #button2, #button3, #button4, #button5, #button6 {
+      display:inline-block;
+      width: 300px;
+      height: 40px;
+  }
+  
+  .myClass {
+    padding-bottom: 3em;
+    display: flex;
+  }
+
+  .Dropdown {
+      position: relative;
+      display: inline-block;
+  }
+
+  .Dropdown-Menu {
+      display: none;
+      position: absolute;
+      flex-direction: column;
+      border: black 1px;
+      width: 100%;
+      height: fit-content;
+      background-color: #9e9e9e66;
+      align-items: center;
+  }
+  .Dropdown-Menu:hover{
+      background-color: #9e9e9e99;
+  }
+  .show{
+      display: flex;
+  }
+</style>  
+
+<body>
+    <div class = "myClass">
+		<button onclick="javascript: window.location.href='/';" id="button1">Home</button>
+  		<button onclick="javascript: window.location.href='/Search';" id="button2">Search</button>
+		<div class = "Dropdown">
+			<button id="button3">Views</button>
+			<div id="Dropdown-Menu1", class="Dropdown-Menu">
+				<a href="/customer_info"> customer_info </a>
+				<a href="/services_sales"> services_sales </a>
+			</div>	
+		</div>
+		<button onclick="javascript: window.location.href='/EditData';" id="button4">Edit Data</button>
+		<button onclick="javascript: window.location.href='/Tracing';" id="button5">Tracing</button>
+		<div class = "Dropdown">
+			<button id="button6">Age Groups</button>			
+			<div id="Dropdown-Menu2", class="Dropdown-Menu">	
+				<a href="/AgeGroup1"> Age Group 1 </a>
+				<a href="/AgeGroup2"> Age Group 2 </a>
+				<a href="/AgeGroup3"> Age Group 3 </a>
+			</div>
+		</div>				
+     	</div>
+    <h2>Enter Time Period</h2>
+    <form action="{{ url_for('AgeGroup3') }}" method="POST">
+        <select type="text" name="time_period">
+            <option value="Last Month">Last Month</option>
+            <option value="Last Year">Last Year</option>
+        </select>
+        <button type="submit">GO!</button>
+    </form>
+    <h3>Most Visited Places in {{ taim }}</h3>
+    <table>
+        <tr>
+            <td>Places</td>
+            <td>Number of Times Visited</td>
+        </tr>
+        {% for result in results %}
+        <tr>
+            <td>{{ result[0] }}</td>
+            <td>{{ result[1] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <h3>Most Used Services in {{ taim }}</h3>
+    <table>
+        <tr>
+            <td>Services</td>
+            <td>Number of Times Used</td>
+        </tr>
+        {% for result2 in results2 %}
+        <tr>
+            <td>{{ result2[0] }}</td>
+            <td>{{ result2[1] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <h3>Most Popular Picked Services in {{ taim }}</h3>
+    <table>
+        <tr>
+            <td>Services</td>
+            <td>Number of Times Chosen</td>
+        </tr>
+        {% for result3 in results3 %}
+        <tr>
+            <td>{{ result3[0] }}</td>
+            <td>{{ result3[1] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <script>
+        document.getElementById("button3").onclick = function() {myFunction()};
+        function myFunction() {
+             document.getElementById("Dropdown-Menu1").classList.toggle("show");
+        }
+        document.getElementById("button6").onclick = function() {myFunction1()};
+        function myFunction1() {
+             document.getElementById("Dropdown-Menu2").classList.toggle("show");
+        }
+       </script>
+</body>
+
+</html>

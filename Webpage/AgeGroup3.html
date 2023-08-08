@@ -1,0 +1,74 @@
+<!DOCTYPE html> 
+<html>
+  <title>AgeGroup3</title>
+  <h1>AgeGroup3</h1> 
+  <style>
+  	#button1 , #button2, #button3, #button4, #button5, #button6 {
+		display:inline-block;
+		width: 300px;
+		height: 40px;
+	}
+	
+	.myClass {
+		display: flex;
+	}
+
+	.Dropdown {
+		position: relative;
+		display: inline-block;
+	}
+
+	.Dropdown-Menu {
+		display: none;
+		position: absolute;
+		flex-direction: column;
+		border: black 1px;
+		width: 100%;
+		height: fit-content;
+		background-color: #9e9e9e66;
+		align-items: center;
+	}
+	.Dropdown-Menu:hover{
+		background-color: #9e9e9e99;
+	}
+	.show{
+		display: flex;
+	}
+  </style>  
+
+
+  <body>
+     	<div class = "myClass">
+		<button onclick="javascript: window.location.href='/Users/chrip/DataBase/templates/Home.html';" id="button1">Home</button>
+  		<button onclick="javascript: window.location.href='/Users/chrip/DataBase/templates/Search.html';" id="button2">Search</button>
+		<div class = "Dropdown">
+			<button id="button3">Views</button>
+			<div id="Dropdown-Menu1", class="Dropdown-Menu">
+				<a href="/Users/chrip/DataBase/templates/View1.html"> View 1 </a>
+				<a href="/Users/chrip/DataBase/templates/View2.html"> View 2 </a>
+			</div>	
+		</div>
+		<button onclick="javascript: window.location.href='/Users/chrip/DataBase/templates/EditData.html';" id="button4">Edit Data</button>
+		<button onclick="javascript: window.location.href='/Users/chrip/DataBase/templates/Tracing.html';" id="button5">Tracing</button>
+		<div class = "Dropdown">
+			<button id="button6">Age Groups</button>			
+			<div id="Dropdown-Menu2", class="Dropdown-Menu">	
+				<a href="/Users/chrip/DataBase/templates/AgeGroup1.html"> Age Group 1 </a>
+				<a href="/Users/chrip/DataBase/templates/AgeGroup2.html"> Age Group 2 </a>
+				<a href="/Users/chrip/DataBase/templates/AgeGroup3.html"> Age Group 3 </a>
+			</div>
+		</div>				
+     	</div>
+
+   <script>
+	document.getElementById("button3").onclick = function() {myFunction()};
+	function myFunction() {
+ 		document.getElementById("Dropdown-Menu1").classList.toggle("show");
+	}
+	document.getElementById("button6").onclick = function() {myFunction1()};
+	function myFunction1() {
+ 		document.getElementById("Dropdown-Menu2").classList.toggle("show");
+	}
+   </script>
+   </body>
+</html>

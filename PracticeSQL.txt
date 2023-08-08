@@ -1,0 +1,212 @@
+Π_costumername(	
+	(σ_(branchname = Porridge)(σ_loan.loannumber=borrower.loannumber)(LoanXBorrower))
+	 -  
+	(σ_depositor.counternumber = account.accountnumber)
+)
+
+Κάνω αφαίρεση στα project, γιατι θα αφαιρεθεί κάτι που έχει ακριβώς τις ίδιες στήλες.
+
+largest account balance
+
+
+Π_ename(σ_employee.esalary > manager.msalary)(EMPLOYEExMANAGER)
+
+Π_color(σ_sid=helen(SAILORS)join(sid=sid)RESERVEjoin(bid=bid)BOATS
+
+-----------------------------lab----------------------------------
+ex1
+Π_name(Product)
+
+SELECT
+	product.name
+FROM	
+	product
+	
+ex2
+Π_name(σ_price>4(product))
+
+SELECT
+	product.name
+FROM
+	product
+WHERE	
+	product.price > "4"
+
+ex3
+Π_name(σ_price>4 Λ price<10)(Product))
+
+SELECT
+	product.name
+FROM
+	product
+WHERE	
+	product.price > "4"
+	AND product.price < "10"
+
+ex4
+
+Has_1 <-(Π_store_id, barcode(HAS))
+Has_2 <-(Π_storeid, barcode(HAS))
+
+Π_store_id(Has1_((has1.store_id = has2.store_id) Λ (has1.storeid<>has2.storeid) X Has2)
+
+
+SELECT
+	store_id
+FROM	
+	(SELECT
+		 COUNT(barcode), Store_id
+	FROM	
+		Has
+	GROUP BY 
+		store_id) as H, has
+WHERE 
+	H.COUNT(barcode) > 2
+
+Π_storeid storeid g_count(barcode>1)(Has)
+
+Ex5
+Π_name(σ_(barcode>5 (storeid g_count(barcode0
+
+
+
+Exercise 6
+
+SELECT	
+	Store.name
+FROM	
+	(SELECT 
+		COUNT(barcode), store_id
+	FROM	
+		Has
+	GROUP BY
+		store_id) as H,
+	(SELECT
+		store_id
+	FROM	
+		Has
+	WHERE	
+		quantity > 0) as D, Store
+WHERE	
+	H.COUNT(barcode) > 2
+	H.store_id = D.store_id
+	and H.store_id = Store.store_id 
+
+Ex7
+
+
+Π_name(Π_(barcode,store_id)HAS/Π_(store_id)(STORE) inner join Π(barcode, name)(Product)(product.barcode = Has.barcode)
+
+
+
+
+
+SELECT
+	product.name
+FROM
+	(SELECT
+		COUNT(Store_id) as NumberOfStores, barcode
+	FROM	
+		HAS
+	GROUP BY 
+		barcode) as H,
+	(SELECT
+		COUNT(*) as number
+	FROM	
+		Store) as TotalStores, product
+WHERE
+	TotalStores.number = H.NumberOfStores
+	H.barcode = product.barcode
+
+
+Ex8
+Π_barcode(σ_storeid=1(Has)) U σ_storeid = 2 (Has)))
+
+SELECT DISTINCT has.barcode
+FROM	
+	has
+WHERE...	
+	
+	
+
+EX10
+SELECT 	has.barcode
+FROM HAS
+WHERE
+	has.storeid = 1
+
+EX11
+
+
+EX4
+SELECT DISTINCT
+	Part.Name
+FROM	
+	Toy, Toy_part, Part
+WHERE
+	Toy.Description like '%car%'
+	AND Toy_part.PartCode = Part.Code
+	AND Toy_part.ToyCode = Toy.Code
+
+
+
+
+-> RELATIONAL ALGEBRA
+
+Π_χρώμα(τμημα)
+
+->
+SELECT 
+	avg(Part.size) as avg, Toy.Code
+FROM
+	Part, Toy_part	
+WHERE
+	Toy_part.PartCode = Part.Code
+GROUP BY
+	Toy.Code
+
+-->
+SELECT
+	 Part.Name, Toy.Name
+FROM
+	 Part, Toy, Toy_part
+WHERE
+	Toy_part.quantity > 1 
+ 	AND Toy_part.ToyCode = part.code
+	AND Toy.Toy_Code = Toy.Code	
+
+
+Ελαχιστη Καλυψη: δεξία μόνα τους, στα αριστερα ολα ελαχιστα
+
+Κανονική: αριστερά ολα μονα τους, 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
